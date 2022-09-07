@@ -5,6 +5,7 @@ $data = json_decode($json);
 
 $array= array('latitude'=>$data->{'latitude'},
               'longitude'=>$data->{'longitude'},
+              'gender'=>$data->{'gender'},
               'time'=>$data->{'time'});
               
 $cow = $data->{'cow'};              
