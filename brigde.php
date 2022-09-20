@@ -3,12 +3,18 @@
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 
+$fecha = new DateTime();
+
+$splitter = $data->{'cow'};  
+$splitter = explode("/", $splitter);
+$cow = $splitter[0];
+$gender = $splitter[1];
+
 $array= array('latitude'=>$data->{'latitude'},
               'longitude'=>$data->{'longitude'},
-              'gender'=>$data->{'gender'},
-              'time'=>$data->{'time'});
-              
-$cow = $data->{'cow'};              
+              'gender'=>$gender,
+              'time'=>$fecha->getTimestamp());
+          
               
 $url = "https://cowiot-default-rtdb.firebaseio.com/cows/$cow.json";
 $url2 = "https://cowiot-default-rtdb.firebaseio.com/cows/$cow/location.json";
